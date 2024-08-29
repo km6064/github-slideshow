@@ -1,13 +1,62 @@
----
-layout: presentation
----
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Signature Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Email Signature Generator</h1>
+        <form id="signature-form">
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="pronouns">Pronouns:</label>
+                <input type="text" id="pronouns" placeholder="He/Him, She/Her, etc.">
+            </div>
+            <div class="form-group">
+                <label for="position">Position:</label>
+                <input type="text" id="position" placeholder="Enter your position" required>
+            </div>
+            <div class="form-group">
+                <label for="qualifications">Qualifications:</label>
+                <input type="text" id="qualifications" placeholder="Enter your qualifications">
+            </div>
+            <div class="form-group">
+                <label for="nmls">NMLS#:</label>
+                <input type="text" id="nmls" placeholder="Enter NMLS# if applicable">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="linkedIn">LinkedIn URL:</label>
+                <input type="url" id="linkedIn" placeholder="Enter your LinkedIn profile URL">
+            </div>
+            <div class="form-group">
+                <label for="meetingLink">Meeting Link:</label>
+                <input type="url" id="meetingLink" placeholder="Enter your meeting scheduler link">
+            </div>
+            <div class="form-group">
+                <label for="profilePicture">Profile Picture:</label>
+                <input type="file" id="profilePicture" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="companyLogo">Company Logo:</label>
+                <input type="file" id="companyLogo" accept="image/*">
+            </div>
+            <button type="button" onclick="generateSignature()">Generate Signature</button>
+            <button type="button" onclick="downloadSignature()">Download HTML</button>
+        </form>
 
-{% for post in site.posts reversed %}
-	{% include slide.html %}
-	<div class="page-break"></div>
-{% endfor %}
-{% unless site.simple-slideshow %}
-{% if site.overview %}
-<section id="overview" class="step" {% for attr in site.overview-data %} data-{{attr[0]}}="{{attr[1]}}"{% endfor %}></section>
-{% endif %}
-{% endunless %}
+        <h2>Your Email Signature:</h2>
+        <div id="signature-output" class="email-signature"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
